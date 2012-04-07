@@ -18,7 +18,7 @@ sub ContentType {
       unless $self->Filename && $self->Filename =~ /\.(\w+)$/;
     my $ext    = $1;
 
-    my $config = RT->Config->Get('CustomizeContentType') or return $content_type;
+    my $config = RT->Config->Get('ContentTypes') or return $content_type;
     return $config->{$ext} || $content_type;
 }
 
@@ -45,7 +45,7 @@ add RT::Extension::CustomizeContentType to @Plugins in RT's etc/RT_SiteConfig.pm
 
     Set( @Plugins, qw(... RT::Extension::CustomizeContentType) );
     Set(
-        %CustomizeContentType,
+        %ContentTypes,
         (
             't'    => 'text/x-perl-script',
             'psgi' => 'text/x-perl-script',
