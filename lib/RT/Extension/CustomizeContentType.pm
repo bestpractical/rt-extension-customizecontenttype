@@ -8,18 +8,35 @@ use RT::Attachment;
 
 package RT::Attachment;
 
-sub ContentType {
-    my $self = shift;
-
-    my $content_type = $self->_Value('ContentType');
-    return $content_type unless $content_type;
+my $new = sub {
+    my $self         = shift;
+    my $content_type = shift;
 
     return $content_type
       unless $self->Filename && $self->Filename =~ /\.(\w+)$/;
-    my $ext    = $1;
+    my $ext = $1;
 
     my $config = RT->Config->Get('ContentTypes') or return $content_type;
     return $config->{$ext} || $content_type;
+};
+
+my $old = __PACKAGE__->can('ContentType');
+if ($old) {
+    no warnings 'redefine';
+    *ContentType = sub {
+        my $self = shift;
+        my $content_type = $old->( $self, @_ );
+        return $content_type unless defined $content_type;
+        return $new->( $self, $content_type );
+    };
+}
+else {
+    *ContentType = sub {
+        my $self         = shift;
+        my $content_type = $self->_Value('ContentType');
+        return $content_type unless defined $content_type;
+        return $new->( $self, $content_type );
+    };
 }
 
 1;
