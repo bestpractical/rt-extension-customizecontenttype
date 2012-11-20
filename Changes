@@ -1,5 +1,10 @@
 Revision history for RT-Extension-CustomizeContentType
 
+0.03    Tue Nov 20 10:31:31 PST 2012
+
+    Included example configuration for a common MS Office problem (thanks to
+    Nathan March)
+
 0.02    Thu Jul 26 10:23:40 CST 2012
 
     Normalize extensions to lowercase(thanks to trs++)
