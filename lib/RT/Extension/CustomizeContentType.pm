@@ -69,9 +69,44 @@ add RT::Extension::CustomizeContentType to @Plugins in RT's etc/RT_SiteConfig.pm
         )
     );
 
+=head1 EXAMPLE CONFIGURATIONS
+
+=head2 Microsoft Office
+
+Older versions of IE often upload newer Microsoft Office documents with the
+generic C<application/octet-stream> MIME type instead of something more
+appropriate.  This causes RT to offer the file for download using the generic
+content type, which confuses users and doesn't launch Office for them.  You can
+fix that by L<installing this extension|/INSTALLATION> and using the
+configuration below:
+
+    Set(%ContentTypes,
+        '.docm' => 'application/vnd.ms-word.document.macroEnabled.12',
+        '.docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        '.dotm' => 'application/vnd.ms-word.template.macroEnabled.12',
+        '.dotx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
+        '.potm' => 'application/vnd.ms-powerpoint.template.macroEnabled.12',
+        '.potx' => 'application/vnd.openxmlformats-officedocument.presentationml.template',
+        '.ppam' => 'application/vnd.ms-powerpoint.addin.macroEnabled.12',
+        '.ppsm' => 'application/vnd.ms-powerpoint.slideshow.macroEnabled.12',
+        '.ppsx' => 'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+        '.pptm' => 'application/vnd.ms-powerpoint.presentation.macroEnabled.12',
+        '.pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        '.xlam' => 'application/vnd.ms-excel.addin.macroEnabled.12',
+        '.xlsb' => 'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
+        '.xlsm' => 'application/vnd.ms-excel.sheet.macroEnabled.12',
+        '.xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        '.xltm' => 'application/vnd.ms-excel.template.macroEnabled.12',
+        '.xltx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
+    );
+
+Config contributed by Nathan March.
+
 =head1 AUTHOR
 
 sunnavy, <sunnavy at bestpractical.com>
+
+Thomas Sibley <trs@bestpractical.com>
 
 
 =head1 LICENSE AND COPYRIGHT
