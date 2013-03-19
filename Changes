@@ -1,5 +1,11 @@
 Revision history for RT-Extension-CustomizeContentType
 
+0.04    Mon Mar 18 18:30:45 PDT 2013
+
+    * Remove leading dots from example config in 0.03
+    * Version numbers don't belong in POD
+    * Update M:I:RTx
+
 0.03    Tue Nov 20 10:31:31 PST 2012
 
     Included example configuration for a common MS Office problem (thanks to
