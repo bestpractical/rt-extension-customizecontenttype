@@ -3,7 +3,7 @@ use strict;
 
 package RT::Extension::CustomizeContentType;
 
-our $VERSION = "0.04";
+our $VERSION = "1.00";
 use RT::Attachment;
 
 package RT::Attachment;
@@ -48,15 +48,41 @@ RT::Extension::CustomizeContentType - Customize Attachments' ContentType
 
 =head1 INSTALLATION
 
-To install this module, run the following commands:
+=over
 
-    perl Makefile.PL
-    make
-    make install
+=item C<perl Makefile.PL>
 
-add RT::Extension::CustomizeContentType to @Plugins in RT's etc/RT_SiteConfig.pm:
+=item C<make>
 
-    Set( @Plugins, qw(... RT::Extension::CustomizeContentType) );
+=item C<make install>
+
+May need root permissions
+
+=item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
+
+If you are using RT 4.2 or greater, add this line:
+
+    Plugin('RT::Extension::CustomizeContentType');
+
+For RT 4.0, add this line:
+
+    Set(@Plugins, qw(RT::Extension::CustomizeContentType));
+
+or add C<RT::Extension::CustomizeContentType> to your existing C<@Plugins> line.
+
+=item Clear your mason cache
+
+    rm -rf /opt/rt4/var/mason_data/obj
+
+=item Restart your webserver
+
+=back
+
+=head1 CONFIGURATION
+
+Set the %ContentTypes configuration variable to a hash of extension and
+desired content-type:
+
     Set(
         %ContentTypes,
         (
@@ -64,8 +90,6 @@ add RT::Extension::CustomizeContentType to @Plugins in RT's etc/RT_SiteConfig.pm
             'psgi' => 'text/x-perl-script',
         )
     );
-
-=head1 EXAMPLE CONFIGURATIONS
 
 =head2 Microsoft Office
 
@@ -100,15 +124,26 @@ Config contributed by Nathan March.
 
 =head1 AUTHOR
 
-sunnavy, <sunnavy at bestpractical.com>
+Best Practical Solutions, LLC E<lt>modules@bestpractical.comE<gt>
 
-Thomas Sibley <trs@bestpractical.com>
+=head1 BUGS
 
+All bugs should be reported via email to
+
+    L<bug-RT-Extension-CustomizeContentType@rt.cpan.org|mailto:bug-RT-Extension-CustomizeContentType@rt.cpan.org>
+
+or via the web at
+
+    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-CustomizeContentType>.
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2012 Best Practical Solutions, LLC.
+This software is Copyright (c) 2014 by Best Practical Solutions
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+This is free software, licensed under:
 
+  The GNU General Public License, Version 2, June 1991
+
+=cut
+
+1;

@@ -1,4 +1,8 @@
 use inc::Module::Install;
+
 RTx('RT-Extension-CustomizeContentType');
-all_from('lib/RT/Extension/CustomizeContentType.pm');
-&WriteAll;
+
+repository('https://github.com/bestpractical/rt-extension-customizecontenttype');
+
+sign();
+WriteAll();
