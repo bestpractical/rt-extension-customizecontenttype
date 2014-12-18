@@ -3,7 +3,7 @@ use strict;
 
 package RT::Extension::CustomizeContentType;
 
-our $VERSION = "1.00";
+our $VERSION = "1.01";
 use RT::Attachment;
 
 package RT::Attachment;
