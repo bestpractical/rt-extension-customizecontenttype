@@ -1,6 +1,9 @@
 NAME
     RT::Extension::CustomizeContentType - Customize Attachments' ContentType
 
+RT VERSION
+    Works with RT 4, 5.0
+
 INSTALLATION
     perl Makefile.PL
     make
@@ -79,7 +82,7 @@ BUGS
         L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-CustomizeContentType>.
 
 LICENSE AND COPYRIGHT
-    This software is Copyright (c) 2014 by Best Practical Solutions
+    This software is Copyright (c) 2014-2022 by Best Practical Solutions
 
     This is free software, licensed under:
 

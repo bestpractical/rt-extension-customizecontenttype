@@ -46,6 +46,10 @@ __END__
 
 RT::Extension::CustomizeContentType - Customize Attachments' ContentType
 
+=head1 RT VERSION
+
+Works with RT 4, 5.0
+
 =head1 INSTALLATION
 
 =over
@@ -138,7 +142,7 @@ or via the web at
 
 =head1 LICENSE AND COPYRIGHT
 
-This software is Copyright (c) 2014 by Best Practical Solutions
+This software is Copyright (c) 2014-2022 by Best Practical Solutions
 
 This is free software, licensed under:
 
